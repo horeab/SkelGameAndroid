@@ -74,7 +74,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
     public boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions) {
         boolean finishLaunching = super.didFinishLaunching(application, launchOptions);
 
-        if (!appInfoService.screenShotMode() && !appInfoService.isProVersion()) {
+        if (!appInfoService.isScreenShotMode() && !appInfoService.isProVersion()) {
             initializeAds(iosApplication);
         }
         return finishLaunching;
@@ -139,7 +139,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
     }
 
     public void showPopupAd() {
-        if (!appInfoService.screenShotMode() && !appInfoService.isProVersion()) {
+        if (!appInfoService.isScreenShotMode() && !appInfoService.isProVersion()) {
             if (interstitialAd.isReady()) {
                 interstitialAd.present(UIApplication.getSharedApplication().getKeyWindow().getRootViewController());
             } else {
