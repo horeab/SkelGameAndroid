@@ -138,7 +138,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
         return interstitialAd;
     }
 
-    public void showPopupAd() {
+    public void showPopupAd(Runnable afterClose) {
         if (!appInfoService.isScreenShotMode() && !appInfoService.isProVersion()) {
             if (interstitialAd.isReady()) {
                 interstitialAd.present(UIApplication.getSharedApplication().getKeyWindow().getRootViewController());
@@ -146,6 +146,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
                 interstitialAd.loadRequest(createRequest());
             }
         }
+        afterClose.run();
     }
 
     private GADRequest createRequest() {
