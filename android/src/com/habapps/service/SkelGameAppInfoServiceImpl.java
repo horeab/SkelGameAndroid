@@ -39,8 +39,8 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
     }
 
     @Override
-    public void showPopupAd() {
-        activity.showPopupAd();
+    public void showPopupAd(Runnable afterClose) {
+        activity.showPopupAd(afterClose);
     }
 
     @Override
