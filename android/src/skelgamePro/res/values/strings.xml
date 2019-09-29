@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Skelgame Pro</string>
+    <string name="language">en</string>
+    <string name="game_id">skelgame</string>
+
+    <string name="admob_banner_id">xxx</string>
+    <string name="admob_inter_id">xxx</string>
+    <string name="admob_video_id">xxx</string>
+    <string name="admob_app_id">xxx</string>
+
+    <bool name="google_facebook_login_enabled">false</bool>
+    <bool name="isPro">true</bool>
+</resources>

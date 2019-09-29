@@ -11,4 +11,5 @@
     <string name="admob_app_id">xxx</string>
 
     <bool name="google_facebook_login_enabled">false</bool>
+    <bool name="isPro">false</bool>
 </resources>

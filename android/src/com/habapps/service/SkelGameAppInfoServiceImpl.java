@@ -85,6 +85,6 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
 
     @Override
     public boolean isProVersion() {
-        return false;
+        return activity.getResources().getBoolean(R.bool.isPro);
     }
 }
