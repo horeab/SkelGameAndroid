@@ -67,7 +67,7 @@ android {
             versionCode 1
             versionName "1.00"
             dimension "game"
-            manifestPlaceholders = [appIcon: "@drawable/skelgamePro_icon"]
+            manifestPlaceholders = [appIcon: "@drawable/skelgamepro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }
