@@ -14,6 +14,9 @@ android {
         skelgame {
             assets.srcDirs = ['assets/tournament_resources/implementations/skelgame', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        skelgamePro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/skelgame', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -57,6 +60,14 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/skelgame_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        skelgamePro {
+            applicationIdSuffix ".skelgamepro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/skelgamePro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }
