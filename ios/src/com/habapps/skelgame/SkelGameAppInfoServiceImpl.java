@@ -3,6 +3,8 @@ package com.habapps.skelgame;
 
 import com.habapps.IOSLauncher;
 
+import org.apache.xml.serializer.utils.Utils;
+
 import libgdx.game.external.AppInfoService;
 
 public class SkelGameAppInfoServiceImpl implements AppInfoService {
@@ -54,6 +56,11 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
     }
 
     @Override
+    public void removeAds() {
+        iosLauncher.removeAds();
+    }
+
+    @Override
     public String getLanguage() {
         return iosLauncher.getGameProperties().getLanguage();
     }
@@ -85,7 +92,7 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
 
     @Override
     public float gameScreenTopMargin() {
-        if (isScreenShotMode() || isProVersion()) {
+        if (isScreenShotMode() || Utils.isValidExtraContent()) {
             return 0;
         }
         return iosLauncher.getSafeAreaInsets() + iosLauncher.getBannerAdHeight();
