@@ -52,7 +52,6 @@ project(":android") {
     }
     dependencies {
         compile project(":core")
-        compile 'com.anjlab.android.iab.v3:library:1.0.44'
 
         implementation 'com.android.support:appcompat-v7:26.1.0'
         //Facebook

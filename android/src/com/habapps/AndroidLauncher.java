@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.badlogic.gdx.pay.android.googlebilling.PurchaseManagerGoogleBilling;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -20,14 +21,14 @@ import com.google.android.gms.ads.MobileAds;
 import com.habapps.service.SkelGameAppInfoServiceImpl;
 
 import libgdx.game.Game;
-import libgdx.utils.startgame.test.DefaultBillingService;
-import libgdx.utils.startgame.test.DefaultFacebookService;
 
 public class AndroidLauncher extends AndroidApplication {
 
     public static final int ID_AD_BANNER = 1111;
 
     private SkelGameAppInfoServiceImpl appInfoService;
+    private SkelGame game;
+    private AdView bannerAdview;
 
     private InterstitialAd interstitialAd;
 
@@ -44,13 +45,25 @@ public class AndroidLauncher extends AndroidApplication {
         allScreenView.setOrientation(LinearLayout.VERTICAL);
         int libgdxAdviewHeight = getResources().getDimensionPixelOffset(R.dimen.libgdx_adview_height);
         ViewGroup.LayoutParams adParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, libgdxAdviewHeight);
-        AdView bannerAdview = new AdView(this);
+        bannerAdview = new AdView(this);
         allScreenView.addView(bannerAdview, adParams);
         allScreenView.addView(createGameView());
         setContentView(allScreenView);
 
         if (!appInfoService.isProVersion()) {
             initAds(bannerAdview);
+        }
+    }
+
+    public void removeAds() {
+        if (bannerAdview != null) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ((ViewGroup) bannerAdview.getParent()).removeView(bannerAdview);
+                    bannerAdview =null;
+                }
+            });
         }
     }
 
@@ -74,11 +87,20 @@ public class AndroidLauncher extends AndroidApplication {
 
 
     private View createGameView() {
+        game = new SkelGame(appInfoService);
+        game.purchaseManager = new PurchaseManagerGoogleBilling(this);
         return initializeForView(
-                new SkelGame(
-                        new DefaultFacebookService(),
-                        new DefaultBillingService(),
-                        appInfoService),
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                game,
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
                 new AndroidApplicationConfiguration());
     }
 
