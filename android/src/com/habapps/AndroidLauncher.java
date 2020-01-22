@@ -45,10 +45,11 @@ public class AndroidLauncher extends AndroidApplication {
         allScreenView.setOrientation(LinearLayout.VERTICAL);
         int libgdxAdviewHeight = getResources().getDimensionPixelOffset(R.dimen.libgdx_adview_height);
         ViewGroup.LayoutParams adParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, libgdxAdviewHeight);
+        View gameView = createGameView();
         if (!Utils.isValidExtraContent()) {
             bannerAdview = new AdView(this);
             allScreenView.addView(bannerAdview, adParams);
-            allScreenView.addView(createGameView());
+            allScreenView.addView(gameView);
             setContentView(allScreenView);
             initAds(bannerAdview);
         }
