@@ -45,12 +45,11 @@ public class AndroidLauncher extends AndroidApplication {
         allScreenView.setOrientation(LinearLayout.VERTICAL);
         int libgdxAdviewHeight = getResources().getDimensionPixelOffset(R.dimen.libgdx_adview_height);
         ViewGroup.LayoutParams adParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, libgdxAdviewHeight);
-        bannerAdview = new AdView(this);
-        allScreenView.addView(bannerAdview, adParams);
-        allScreenView.addView(createGameView());
-        setContentView(allScreenView);
-
-        if (!appInfoService.isProVersion()) {
+        if (!Utils.isValidExtraContent()) {
+            bannerAdview = new AdView(this);
+            allScreenView.addView(bannerAdview, adParams);
+            allScreenView.addView(createGameView());
+            setContentView(allScreenView);
             initAds(bannerAdview);
         }
     }
@@ -61,7 +60,7 @@ public class AndroidLauncher extends AndroidApplication {
                 @Override
                 public void run() {
                     ((ViewGroup) bannerAdview.getParent()).removeView(bannerAdview);
-                    bannerAdview =null;
+                    bannerAdview = null;
                 }
             });
         }
@@ -114,7 +113,7 @@ public class AndroidLauncher extends AndroidApplication {
 
 
     public void showPopupAd(final Runnable afterClose) {
-        if (!appInfoService.isProVersion()) {
+        if (!Utils.isValidExtraContent()) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
